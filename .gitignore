@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Local environment configuration
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# Compiled output
+dist/
+build/
+
+# macOS directory attributes
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Editor-specific files
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+.vercel
