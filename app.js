@@ -9,7 +9,7 @@ const errorHandler = require("./utils/errorHandler");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const mongodbUri = process.env.MONGODB_URI;
 
 mongoose.connect(mongodbUri, {
