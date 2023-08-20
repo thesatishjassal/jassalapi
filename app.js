@@ -30,6 +30,7 @@ app.use(errorHandler);
 app.use(bodyParser.json());
 app.use("/contacts", contactRoutes);
 
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
