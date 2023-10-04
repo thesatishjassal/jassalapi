@@ -5,15 +5,25 @@ async function sendContactEmail(
   { adminRecipient, adminSubject }
 ) {
   try {
+    // const transporter = nodemailer.createTransport({
+    //   service: "Gmail",
+    //   auth: {
+    //     user: "thesatishjassal@gmail.com", // Your Gmail address
+    //     pass: "ulryvkevtlebqtff", // Your Gmail password or an app-specific password
+    //   },
+    // });
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
-      auth: {
-        user: "thesatishjassal@gmail.com", // Your Gmail address
-        pass: "ulryvkevtlebqtff", // Your Gmail password or an app-specific password
-      },
-    });
+        host: 'mail.thesatishjassal.com',
+        port: 465,  // Use the appropriate port for TLS
+        secure: true,  // Set to true if using SSL
+        auth: {
+          user: 'mail@thesatishjassal.com',
+          pass: 'wsI]t(Q40G{-',
+        },
+      });
+    
     const mailOptions = {
-      from: "thesatishjassal@gmail.com",
+      from: "mail@thesatishjassal.com",
       to: email,
       subject,
       text: message,

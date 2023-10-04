@@ -26,9 +26,8 @@ exports.getContactById = async (req, res) => {
 
 exports.createContact = async (req, res) => {
   try {
-    const newContact = await Contact.create(req.body);
-    res.status(201).json(newContact);
     const { name, email, subject, message } = req.body;
+    const newContact = await Contact.create(req.body);
     await sendContactEmail(
       { name, email, subject, message },
       {
@@ -36,6 +35,7 @@ exports.createContact = async (req, res) => {
         adminSubject: "New Contact Form Submission",
       }
     );
+    res.status(201).json(newContact);
   } catch (error) {
     res.status(400).json({ error: "Bad request" });
   }
