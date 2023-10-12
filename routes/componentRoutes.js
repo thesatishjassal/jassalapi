@@ -15,7 +15,7 @@ const uiComponent = new mongoose.Schema({
     {
       id: String, // If you want to keep "id" inside the "packages" array
       icon: String,
-    },
+    },  
   ],
   tags: [
     {
