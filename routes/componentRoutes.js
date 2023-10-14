@@ -1,43 +1,13 @@
-const mongoose = require('mongoose');
+// src/routes/componentRoutes.js
+const express = require('express');
+const componentController = require('../controllers/componentController');
 
-// Define a schema for the UIComponent collection
-const uiComponent = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: String,
-  technologies: String,
-  coverImage: String,
-  thumbnail: String,
-  demoLink: String,
-  packages: [
-    {
-      id: String, // If you want to keep "id" inside the "packages" array
-      icon: String,
-    },  
-  ],
-  tags: [
-    {
-      id: String, // If you want to keep "id" inside the "tags" array
-      name: String,
-    },
-  ],
-  checked: Boolean,
-  blogLink: String,
-  fileType: [String], // FileType as an array
-  features: String,
-  basedOn: [
-    {
-      id: String,
-      icon: String,
-    },
-  ],
-  youtubeLink: String,
-  downloadFileLink: String,
-});
+const router = express.Router();
 
-// Create a UIComponent model based on the schema
-const UIComponent = mongoose.model('UIComponent', uiComponent);
+router.get('/', componentController.getAllComponent);
+router.get('/:id', componentController.getComponentById);
+router.post('/', componentController.createComponent);
+router.delete('/:id', componentController.deleteComponent);
+router.put('/:id', componentController.editComponent);
 
-module.exports = UIComponent;
+module.exports = router;
