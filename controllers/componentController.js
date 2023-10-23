@@ -23,33 +23,23 @@ exports.getComponentById = async (req, res) => {
   }
 };
 
+// exports.createComponent = async (req, res) => {
+//   try {
+//     const newComponent = await Component.create(req.body);
+//     return res.status(201).json(newComponent);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(400).json({ error: error.message });
+//   }
+// };
+
 exports.createComponent = async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      additions,
-      category,
-      tags,
-      filetype,
-      thumbnail,
-      youtubelink,
-      donwloadlink,
-    } = req.body;
-    const newComponent = await Component.create(
-      title,
-      description,
-      additions,
-      category,
-      tags,
-      filetype,
-      thumbnail,
-      youtubelink,
-      donwloadlink
-    );
-    res.status(201).json(newComponent);
+    const newComponent = await Component.create(req.body);
+    return res.status(201).json(newComponent);
   } catch (error) {
-    res.status(400).json({ error: "Bad request" });
+    console.error(error);
+    return res.status(400).json({ error: error.message });
   }
 };
 
@@ -76,7 +66,7 @@ exports.deleteComponent = async (req, res) => {
   try {
     const componentId = req.params.id;
     const component = await Component.findById(componentId);
-    if (!blog) {
+    if (!component) {
       res.status(404).json({ message: "Component not found" });
     } else {
       // Delete the item

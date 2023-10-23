@@ -25,14 +25,7 @@ exports.getPropsoalById = async (req, res) => {
 
 exports.createPropsoal = async (req, res) => {
   try {
-    const { name, email, project_type, budget, description } = req.body;
-    const newPropsoal = await Propsoals.create(
-      name,
-      email,
-      project_type,
-      budget,
-      description
-    );
+    const newPropsoal = await Propsoals.create(req.body);
     res.status(201).json(newPropsoal);
   } catch (error) {
     res.status(400).json({ error: "Bad request" });

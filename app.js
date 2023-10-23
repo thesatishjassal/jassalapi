@@ -7,6 +7,7 @@ const contactRoutes = require("./routes/contactRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const serviceRoutes = require("./routes/servicesRoutes");
 const propsoalRoutes = require("./routes/propsoalsRoutes");
+const componentsRoutes = require("./routes/componentRoutes");
 const errorHandler = require("./utils/errorHandler");
 
 require("dotenv").config();
@@ -21,11 +22,13 @@ mongoose.connect(mongodbUri, {
 });
 
 // Use the cors middleware with appropriate options
+const allowedOrigins = ['http://localhost:3000', 'https://jassalapi.in.net'];
+// Use the cors middleware with appropriate options
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with the origin of your frontend app
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Add the allowed HTTP methods
-    credentials: true, // Include cookies and credentials in the request
+      origin: allowedOrigins, // Replace with the origin of your frontend app
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Add the allowed HTTP methods
+      credentials: true, // Include cookies and credentials in the request
   })
 );
 
@@ -40,6 +43,7 @@ app.use("/contacts", contactRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/services", serviceRoutes);
 app.use("/propsoals", propsoalRoutes);
+app.use("/components", componentsRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
